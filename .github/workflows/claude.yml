@@ -13,11 +13,12 @@ jobs:
   claude-response:
     runs-on: ubuntu-latest
     steps:
+      # リポジトリをチェックアウト（これが必要！）
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
       - uses: anthropics/claude-code-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # オプション: トリガーフレーズをカスタマイズ（デフォルト: @claude）
-          # trigger_phrase: "/claude"
-          # オプション: Issueへのアサイン時のトリガー
-          # assignee_trigger: "claude"
